@@ -16,7 +16,12 @@ main:	PUSH	{LR}
 	@-------------
 	@ Your code goes here.  Put n! in R2
 	@-------------
-
+    MOV R2, #1
+loop:
+    CMP R0, #1
+    MULGE R2, R0, R2
+    SUBGE R0, R0, #1
+    BGE loop
 
 
 
@@ -27,7 +32,7 @@ main:	PUSH	{LR}
 	LDR	R0, =out
 	BL 	printf
 	POP	{PC}
-	
+
 .data
 n:	.word 0
 prompt:	.asciz "Enter n: "
